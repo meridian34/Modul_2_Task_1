@@ -8,38 +8,39 @@ using System.Threading.Tasks;
 
 namespace Modul_2_Task_1.Models
 {
-    internal class Starter
+    public class Starter
     {
-        internal void Run()
+        private readonly int _minRandomValue = 1;
+        private readonly int _maxRandomValue = 4;
+        private readonly Random _random = new Random();
+        private readonly Actions _actions = new Actions();
+        private readonly Logger _logger = Logger.Instance;
+        private Result _bufferResult;
+        public void Run()
         {
-            Actions actions = new Actions();
-            Result result;
             for (int i = 0; i < 100; i++)
             {
-                int rnd = new Random().Next(1, 4);
+                int rnd = _random.Next(_minRandomValue, _maxRandomValue);
                 switch (rnd)
                 {
                     case 1:
-                        result = actions.Create();
+                        _bufferResult = _actions.Create();
                         break;
                     case 2:
-                        result = actions.Update();
+                        _bufferResult = _actions.Update();
                         break;
                     case 3:
-                        result = actions.Remove();
-                        break;
-                    default:
-                        result = null;
+                        _bufferResult = _actions.Remove();
                         break;
                 }
 
-                if (!result.Status)
+                if (!_bufferResult.Status)
                 {
-                    Logger.GetLogger().AddLog($"Action failed by a reason: {result.ErrMessage}", LogType.Error);
+                    _logger.Log(LogType.Error, $"Action failed by a reason: {_bufferResult.ErrorMessage}");
                 }
             }
 
-            File.WriteAllText($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}//log.txt", Logger.GetLogger().GetLog());
+            File.WriteAllText("log.txt", Logger.Instance.GetLogs());
         }
     }
 }

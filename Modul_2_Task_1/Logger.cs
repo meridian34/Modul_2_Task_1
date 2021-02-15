@@ -8,10 +8,25 @@ namespace Modul_2_Task_1.Models
         private StringBuilder _logText;
         private Logger()
         {
-            _logText
+            _logText = new StringBuilder();
         }
 
-        public static Logger Instance { get { return Nested.Instance; } }
+        public static Logger Instance
+        {
+            get { return Nested.Instance; }
+        }
+
+        public void Log(LogType logType, string message)
+        {
+            var logMessage = $"{DateTime.UtcNow}: {logType}: {message}";
+            Console.WriteLine(logMessage);
+            _logText.AppendLine(logMessage);
+        }
+
+        public string GetLogs()
+        {
+            return _logText.ToString();
+        }
 
         private class Nested
         {
@@ -19,41 +34,6 @@ namespace Modul_2_Task_1.Models
             static Nested()
             {
             }
-        }
-    }
-
-    public class Loggger
-    {
-        readonly Loggger _logger;
-        private StringBuilder _log;
-
-        private Loggger()
-        {
-        }
-
-        //public static Loggger GetLoggger()
-        //{
-        //    if (_loggger == null)
-        //    {
-        //        _loggger = new Loggger();
-        //        _loggger._log = new StringBuilder();
-        //    }
-
-        //    return _loggger;
-        //}
-
-        public static Loggger Instance { get; init; }
-
-        internal void AddLog(string message, LogType logType)
-        {
-            string logMessage = $"{DateTime.UtcNow}: {logType}: {message}";
-            Console.WriteLine(logMessage);
-            _log.Append($"{logMessage}\n");
-        }
-
-        internal string GetLog()
-        {
-            return _loggger._log.ToString();
         }
     }
 }
