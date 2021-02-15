@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Modul_2_Task_1.Models
+﻿namespace Modul_2_Task_1.Models
 {
-    internal enum LogType
+    public enum LogType
     {
         /// <summary>
         /// This value indicates an application error.
