@@ -13,7 +13,7 @@
         Info,
 
         /// <summary>
-        /// This value indicates an application warning.
+        /// This value indicates an application warning .
         /// </summary>
         Warning
     }
