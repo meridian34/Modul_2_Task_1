@@ -4,9 +4,10 @@ namespace Modul_2_Task_1
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
-            new Starter().Run();
+            var starter = new Starter();
+            starter.Run();
             Console.ReadKey();
         }
     }
