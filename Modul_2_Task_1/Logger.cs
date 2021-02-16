@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace Modul_2_Task_1.Models
+namespace Modul_2_Task_1
 {
     public class Logger
     {

@@ -6,7 +6,7 @@ namespace Modul_2_Task_1
     {
         public static void Main(string[] args)
         {
-            new Models.Starter().Run();
+            new Starter().Run();
             Console.ReadKey();
         }
     }

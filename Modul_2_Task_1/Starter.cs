@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Modul_2_Task_1.Models
+namespace Modul_2_Task_1
 {
     public class Starter
     {
